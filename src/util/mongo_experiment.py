@@ -19,7 +19,7 @@ def first_page():
 
 @app.route('/find')
 def find():
-    """Finds the document with matching name"""
+    """Finds the document with matching name."""
     about_me = mongo.db.about_me
     rana_details = about_me.find_one({'Name': 'Rana'})
     print("Here: ", rana_details)
