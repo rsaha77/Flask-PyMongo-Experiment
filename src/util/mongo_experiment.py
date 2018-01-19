@@ -19,6 +19,7 @@ def first_page():
 
 @app.route('/find')
 def find():
+    """Finds the document with matching name"""
     about_me = mongo.db.about_me
     rana_details = about_me.find_one({'Name': 'Rana'})
     print("Here: ", rana_details)
@@ -33,11 +34,20 @@ def find():
 
 @app.route('/upsert')
 def upsert():
+    """If the Name is found update the Age,
+    else insert a new document.
+    """
     about_me = mongo.db.about_me
     about_me.update({'Name': 'Rana'}, {"$set": {'Age': 25}})
     rana_details = about_me.find_one({'Name': 'Rana'})
     print("Here: ", rana_details)
     return str(rana_details['Age'])
+
+
+@app.route('/remove')
+def remove():
+    """Remove the document where the key is "AGE"""
+    pass
 
 
 if __name__ == '__main__':
