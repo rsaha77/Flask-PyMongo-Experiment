@@ -38,15 +38,25 @@ def upsert():
     else insert a new document.
     """
     about_me = mongo.db.about_me
-    about_me.update({'Name': 'Rana'}, {"$set": {'Age': 25}})
+    about_me.update({'Name': 'Rana'}, {"$set": {'Age': 22}}, upsert=True)
     rana_details = about_me.find_one({'Name': 'Rana'})
     print("Here: ", rana_details)
     return str(rana_details['Age'])
 
 
+@app.route('/remove_doc')
+def remove_doc():
+    """Remove the document with matching name."""
+    about_me = mongo.db.about_me
+    to_remove = 'Ranas'
+    about_me.remove({'Name': to_remove})
+    return "Removed " + to_remove
+
+
+
 @app.route('/remove')
 def remove():
-    """Remove the document where the key is "AGE"""
+    """Remove the key "AGE" in any doc."""
     pass
 
 
