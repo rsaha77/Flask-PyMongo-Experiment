@@ -9,8 +9,6 @@ app.config['MONGO_DBNAME'] = 'my_mongo_experiments'
 app.config['MONGO_URI'] = 'mongodb://' + os.environ.get('DB_USER') + ':' + os.environ.get(
     'DB_PASS') + '@ds127536.mlab.com:27536/my_mongo_experiments'
 
-print(app.config['MONGO_URI'])
-
 mongo = PyMongo(app)
 
 
