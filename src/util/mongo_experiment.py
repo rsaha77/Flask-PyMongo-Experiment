@@ -53,12 +53,12 @@ def remove_doc():
     return "Removed " + to_remove
 
 
-
 @app.route('/remove')
 def remove():
     """Remove the key "AGE" in any doc."""
-    pass
+    return "In Progress"
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 9099))
+    app.run(host='0.0.0.0', port=port)
